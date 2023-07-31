@@ -1,0 +1,162 @@
+local Loader = {};
+if tostring(game.GameId) ~= "3150475059" then return end;
+local isexecutorclosure = is_synapse_function or isexecutorclosure;
+
+for i,v in next, getconnections(game:GetService("ScriptContext").Error) do
+v:Disable()
+end
+
+for i,v in next, getgc() do
+	if type(v) == "function" and islclosure(v) and not isexecutorclosure(v) and getinfo(v).source:find("PlayerModule.LocalScript") then
+		local const = table.find(getconstants(v), 4000001);
+		
+		if const then
+			setconstant(v, const, 1); 
+		end
+	end
+ end
+ hookfunction(game:GetService("LogService").GetLogHistory, function() return {} end)
+
+-- StarterGui.ScreenGui
+Loader["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+Loader["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+-- StarterGui.ScreenGui.Main
+Loader["2"] = Instance.new("Frame", Loader["1"]);
+Loader["2"]["BorderSizePixel"] = 0;
+Loader["2"]["BackgroundColor3"] = Color3.fromRGB(41, 41, 41);
+Loader["2"]["Size"] = UDim2.new(0, 602, 0, 391);
+Loader["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+Loader["2"]["Position"] = UDim2.new(0.31956401467323303, 0, 0.2936842143535614, 0);
+Loader["2"]["Name"] = [[Main]];
+
+-- StarterGui.ScreenGui.Main.UICorner
+Loader["3"] = Instance.new("UICorner", Loader["2"]);
+Loader["3"]["CornerRadius"] = UDim.new(0, 6);
+
+-- StarterGui.ScreenGui.Main.Logo
+Loader["4"] = Instance.new("ImageLabel", Loader["2"]);
+Loader["4"]["BorderSizePixel"] = 0;
+Loader["4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+Loader["4"]["Image"] = [[rbxassetid://14256268667]];
+Loader["4"]["Size"] = UDim2.new(0, 222, 0, 222);
+Loader["4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+Loader["4"]["Name"] = [[Logo]];
+Loader["4"]["BackgroundTransparency"] = 1;
+Loader["4"]["Position"] = UDim2.new(0.31561461091041565, 0, 0.21483376622200012, 0);
+
+-- StarterGui.ScreenGui.Main.SpinningCircle
+Loader["5"] = Instance.new("ImageLabel", Loader["2"]);
+Loader["5"]["ZIndex"] = 3;
+Loader["5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+Loader["5"]["ImageColor3"] = Color3.fromRGB(255, 74, 129);
+Loader["5"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+Loader["5"]["Image"] = [[rbxassetid://13332271166]];
+Loader["5"]["Size"] = UDim2.new(0.22044037282466888, 0, 0.19361916184425354, 0);
+Loader["5"]["Name"] = [[SpinningCircle]];
+Loader["5"]["BackgroundTransparency"] = 1;
+Loader["5"]["Position"] = UDim2.new(0.4991694390773773, 0, 0.6842941641807556, 0);
+
+-- StarterGui.ScreenGui.Main.SpinningCircle.UIAspectRatioConstraint
+Loader["6"] = Instance.new("UIAspectRatioConstraint", Loader["5"]);
+
+
+-- StarterGui.ScreenGui.Main.SpinningCircle.UIGradient
+Loader["7"] = Instance.new("UIGradient", Loader["5"]);
+Loader["7"]["Transparency"] = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0.3062499761581421),NumberSequenceKeypoint.new(0.743, 1),NumberSequenceKeypoint.new(1.000, 1)};
+Loader["7"]["Rotation"] = -90;
+
+-- StarterGui.ScreenGui.Main.SpinningCircle.Spin
+Loader["8"] = Instance.new("LocalScript", Loader["5"]);
+Loader["8"]["Name"] = [[Spin]];
+
+-- StarterGui.ScreenGui.Main.LoadBarBack
+Loader["9"] = Instance.new("Frame", Loader["2"]);
+Loader["9"]["BorderSizePixel"] = 0;
+Loader["9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+Loader["9"]["Size"] = UDim2.new(0, 440, 0, 8);
+Loader["9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+Loader["9"]["Position"] = UDim2.new(0.13455139100551605, 0, 0.9258311986923218, 0);
+Loader["9"]["Name"] = [[LoadBarBack]];
+
+-- StarterGui.ScreenGui.Main.LoadBarBack.UICorner
+Loader["a"] = Instance.new("UICorner", Loader["9"]);
+Loader["a"]["CornerRadius"] = UDim.new(0, 6);
+
+-- StarterGui.ScreenGui.Main.LoadBarBack.LoadBarMain
+Loader["b"] = Instance.new("Frame", Loader["9"]);
+Loader["b"]["BorderSizePixel"] = 0;
+Loader["b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+Loader["b"]["Size"] = UDim2.new(0, 17, 0, 8);
+Loader["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+Loader["b"]["Name"] = [[LoadBarMain]];
+
+-- StarterGui.ScreenGui.Main.LoadBarBack.LoadBarMain.UIGradient
+Loader["c"] = Instance.new("UIGradient", Loader["b"]);
+Loader["c"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(80, 87, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 74, 129))};
+
+-- StarterGui.ScreenGui.Main.LoadBarBack.LoadBarMain.UICorner
+Loader["d"] = Instance.new("UICorner", Loader["b"]);
+Loader["d"]["CornerRadius"] = UDim.new(0, 6);
+
+-- StarterGui.ScreenGui.Main.TextLabel
+Loader["e"] = Instance.new("TextLabel", Loader["2"]);
+Loader["e"]["BorderSizePixel"] = 0;
+Loader["e"]["BackgroundColor3"] = Color3.fromRGB(41, 41, 41);
+Loader["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+Loader["e"]["TextSize"] = 14;
+Loader["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+Loader["e"]["Size"] = UDim2.new(0, 209, 0, 27);
+Loader["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+Loader["e"]["Text"] = [[Loading, this may take a few moments]];
+Loader["e"]["Position"] = UDim2.new(0.3255814015865326, 0, 0.8567774891853333, 0);
+
+local function TweenUpFromBottom()
+    local mainFrame = Loader["2"] -- Make sure the "Loader" object contains the mainFrame you want to tween
+    mainFrame.AnchorPoint = Vector2.new(0.5, 0.5) -- Set the anchor point to center
+
+    local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+    local workspace = game:GetService("Workspace")
+    local screenCenterY = workspace.CurrentCamera.ViewportSize.Y / 2
+
+    local mainFrameHeight = mainFrame.Size.Y.Offset -- Get the height of the mainFrame
+    local finalYOffset = mainFrameHeight / 9 -- Check that this value is appropriate for the desired final position
+    local finalY = screenCenterY - finalYOffset -- Calculate the final Y position
+
+    local initialPosition = UDim2.new(0.5, 0, 1, 0) -- Set initial X and Y positions
+    local finalPosition = UDim2.new(0.5, 0, 0, finalY) -- Set final X and Y positions
+
+    mainFrame.Position = initialPosition
+    local tween = game:GetService("TweenService"):Create(mainFrame, tweenInfo, { Position = finalPosition })
+
+    tween:Play()
+    tween.Completed:Connect(function()
+        wait(5.5)
+        mainFrame:Destroy()
+    end)
+end
+
+-- Call the function to start the tweening
+TweenUpFromBottom()
+
+
+wait(1)
+
+local function C_8()
+    local script = Loader["8"];
+    local TweenService = game:GetService("TweenService")
+    local tweenInfo = TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
+
+    while true do
+        script.Parent.Rotation = 0
+        TweenService:Create(script.Parent, tweenInfo, { Rotation = 1200 }):Play()
+        local initialSize = Loader["b"].Size
+        local finalSize = Loader["9"].Size
+        TweenService:Create(Loader["b"], tweenInfo, { Size = finalSize }):Play()
+        wait(5)
+        break
+    end
+end
+
+task.spawn(C_8)
